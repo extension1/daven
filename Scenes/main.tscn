@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c2g4cuboxv342"]
+
+[ext_resource type="PackedScene" uid="uid://dqyl1f0juve0n" path="res://Scenes/Map.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://d3o5u4ckpxkst" path="res://Scenes/daven.tscn" id="2_8gbba"]
+
+[node name="Main" type="Node2D" unique_id=707484614]
+
+[node name="Bedrock" parent="." unique_id=1326559206 instance=ExtResource("1_bo1nx")]
+position = Vector2(-230, 395)
+
+[node name="davenog" parent="." unique_id=1043932947 instance=ExtResource("2_8gbba")]
+position = Vector2(-105, 271)
