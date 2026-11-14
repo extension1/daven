@@ -12,3 +12,9 @@ help him get back to the sunlight and reach his original color once again by bre
 controls:
 W toggles *bounce*
 A and D are left and right movement keys when *bounce* isn't toggled
+
+CREDITS:
+
+https://v3x3d.itch.io/block-land
+
+https://dustdfg.itch.io/pixel-art-hedgehog
