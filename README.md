@@ -4,8 +4,8 @@ random project made by vidan pinto and akhil valavan for hack club harvest :D
 
 controls:
 W toggles *bounce*. After bounce mode is toggled, drag in the opposite direction you wanna go (kinda like breakout) and let it rip.
-A and D are left and right movement keys when *bounce* isn't toggled.
-ctrl+scroll wheel up and ctrl+scroll wheel down are zoom in and zoom out respectively
+  A and D are left and right movement keys when *bounce* isn't toggled.
+  ctrl+scroll wheel up and ctrl+scroll wheel down are zoom in and zoom out respectively
 
 CREDITS:
 
