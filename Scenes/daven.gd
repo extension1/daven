@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 350
-const SPIN_SPEED = 3240
+const SPIN_SPEED = 720
 
 const SLOWMO_SCALE = 0.25        
 const LAUNCH_SPEED = 600.0      
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			if col:
 				check_breakable_tile(col)
 				velocity = velocity.bounce(col.get_normal())
-				spin_dir *= -1 # Flip spin direction on collision
+				spin_dir *= -1 # flip spin direction on collision
 		State.NORMAL:
 			_move_normal(delta)
 
@@ -169,7 +169,7 @@ func _draw_dots(from: Vector2, to: Vector2, tint: Color, strength: float) -> voi
 	if length < 1.0:
 		return
 	var dir: Vector2 = d / length
-	var dist: float = fposmod(float(Time.get_ticks_msec()) * 0.03, DOT_SPACING)  # makes the dots march
+	var dist: float = fposmod(float(Time.get_ticks_msec()) * 0.03, DOT_SPACING)  
 	while dist < length:
 		var t: float = dist / length
 		var alpha: float = lerpf(1.0, 0.25, t) * strength
