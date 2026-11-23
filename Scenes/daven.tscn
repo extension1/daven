@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cyxf5l0x75ru5" path="res://pixel_art_hedgehog/idle/idle.png" id="1_5kpw1"]
 [ext_resource type="Script" uid="uid://dubygh5y3sqio" path="res://Scenes/daven.gd" id="1_v7w46"]
 [ext_resource type="Texture2D" uid="uid://c0fiqi417xykd" path="res://pixel_art_hedgehog/move/move.png" id="2_v7w46"]
+[ext_resource type="Script" uid="uid://b8sx0rhnqttl5" path="res://Scenes/camera_2d_zoom.gd" id="4_ql5ed"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idj7w"]
 atlas = ExtResource("1_5kpw1")
@@ -95,3 +96,4 @@ shape = SubResource("CapsuleShape2D_ql73s")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=422486507]
 position_smoothing_enabled = true
 position_smoothing_speed = 6.7
+script = ExtResource("4_ql5ed")
