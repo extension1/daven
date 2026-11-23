@@ -177,3 +177,4 @@ func notify_broken(layer: TileMapLayer, cell: Vector2i) -> void:
 	if layer == brick_layer:
 		broken[cell] = true
 	brick_broken.emit(layer, cell)
+	print("i broke something") ## debug

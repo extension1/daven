@@ -18,6 +18,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# bugtesting so infinite zoom yayay 
 	zoom_variable = clampf(zoom_variable, min_zoom, max_zoom)
 
+# smooth criminal
 func _process(delta: float) -> void:
 	var zoom_x = zoom.x
 	var zoom_y = zoom.y

@@ -2,11 +2,36 @@
 
 [ext_resource type="PackedScene" uid="uid://dqyl1f0juve0n" path="res://Scenes/Map.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://d3o5u4ckpxkst" path="res://Scenes/daven.tscn" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://dso1cbd2e7ofj" path="res://imgs/coob.png" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://c8sk20xjtqwl7" path="res://Scenes/HUD.gd" id="2_kry3j"]
 
 [node name="Main" type="Node2D" unique_id=707484614]
 
 [node name="Bedrock" parent="." unique_id=1326559206 instance=ExtResource("1_bo1nx")]
 position = Vector2(-153, 401)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1038153349]
+script = ExtResource("2_kry3j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=1419028663]
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 99.0
+offset_bottom = 70.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer" unique_id=116129558]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_jjvhh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/HBoxContainer" unique_id=1167203693]
+layout_mode = 2
+size_flags_vertical = 4
+text = "0"
+fit_content = true
+autowrap_mode = 0
 
 [node name="davenog" parent="." unique_id=1043932947 instance=ExtResource("2_8gbba")]
 position = Vector2(-196, 313)
