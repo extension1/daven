@@ -9,4 +9,4 @@
 position = Vector2(-153, 401)
 
 [node name="davenog" parent="." unique_id=1043932947 instance=ExtResource("2_8gbba")]
-position = Vector2(-247, 170)
+position = Vector2(-153, 665)

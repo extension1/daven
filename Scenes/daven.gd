@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 350
+const SPIN_SPEED = 3240
 
 const SLOWMO_SCALE = 0.25        
 const LAUNCH_SPEED = 600.0      
@@ -19,6 +20,7 @@ const COLOR_AIM = Color(1, 0.75, 0.25)
 enum State { NORMAL, AIMING, BOUNCING }
 
 var state: State = State.NORMAL
+var spin_dir: int = 1 # 1 = clockwise, -1 = counter-clockwise
 var lightblocker: int = 0        
 var won: bool = false
 
@@ -51,10 +53,13 @@ func _physics_process(delta: float) -> void:
 			_move_normal(delta)
 			_process_aiming()
 		State.BOUNCING:
+			animated_sprite_2d.rotation_degrees += SPIN_SPEED * spin_dir * delta
+			
 			var col := move_and_collide(velocity * delta)
 			if col:
 				check_breakable_tile(col)
 				velocity = velocity.bounce(col.get_normal())
+				spin_dir *= -1 # Flip spin direction on collision
 		State.NORMAL:
 			_move_normal(delta)
 
@@ -79,6 +84,9 @@ func _set_state(new_state: State) -> void:
 		return
 	if state == State.AIMING:
 		_end_aiming()
+	elif state == State.BOUNCING:
+		animated_sprite_2d.rotation_degrees = 0.0
+		
 	state = new_state
 	if state == State.AIMING:
 		_begin_aiming()
@@ -111,6 +119,7 @@ func _process_aiming() -> void:
 		if not mouse_down:
 			if aim_vector.length() >= MIN_PULL:
 				velocity = aim_vector.normalized() * LAUNCH_SPEED
+				spin_dir = 1 if aim_vector.x >= 0 else -1
 				_set_state(State.BOUNCING)
 				return
 			
@@ -137,7 +146,6 @@ func _draw() -> void:
 	if state != State.AIMING:
 		return
 
-	
 	draw_arc(Vector2.ZERO, RING_RADIUS, 0.0, TAU, 64, Color(1, 1, 1, 0.2), 2.0, true)
 
 	if not dragging or aim_vector.length() < MIN_PULL:
@@ -146,14 +154,11 @@ func _draw() -> void:
 	var tint: Color = COLOR_AIM
 	var dir: Vector2 = aim_vector.normalized()
 
-	
 	draw_arc(Vector2.ZERO, RING_RADIUS, 0.0, TAU, 64, tint, 4.0, true)
 
-	
 	_draw_dots(dir * DOT_START, preview_hit_point, tint, 1.0)
 
 	if preview_has_bounce:
-	
 		draw_circle(preview_hit_point, 9.0, Color(tint.r, tint.g, tint.b, 0.3))
 		draw_circle(preview_hit_point, 4.0, tint)
 		_draw_dots(preview_hit_point, preview_bounce_end, tint, 0.5)
@@ -199,7 +204,6 @@ func check_breakable_tile(collision: KinematicCollision2D) -> void:
 		layer.erase_cell(tile_coords)
 		get_tree().call_group("chunk_world", "notify_broken", layer, tile_coords)
 		lightblocker -= 1
-		
 		
 ### i removed these for now cuz i havent figured out the ending thingymajigs yet
 		# if lightblocker <= 0 and not won:
