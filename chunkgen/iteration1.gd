@@ -52,7 +52,7 @@ func _ready() -> void:
 	if glow_layer == null:
 		glow_layer = get_parent().get_node_or_null("actual glowy bedrock") as TileMapLayer
 	if hand_layer == null or glow_layer == null:
-		push_error("ChunkWorld: couldnt find hand_layer / glow_layer, assign them in the inspector")
+		push_error("ChunkWorld: couldnt find the actual bedrock layer, assign them in the inspector or something")
 		set_process(false)
 		return
 
